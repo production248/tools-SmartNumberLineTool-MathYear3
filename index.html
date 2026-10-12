@@ -1,0 +1,105 @@
+﻿<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffca4f">
+  <meta name="description" content="An interactive number-line learning tool for Malaysian Math Year 3 pupils.">
+  <title>Smart Number Line - Math Year 3</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">↔</span>
+        <div>
+          <h1 data-i18n="appTitle">Jom Main Garis Nombor!</h1>
+          <p data-i18n="appSubtitle">Lihat, tekan dan cari jawapan.</p>
+          <span class="grade-badge" id="gradeBadge" hidden></span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="true">
+          <span aria-hidden="true">🔊</span><span data-i18n="soundOn">Bunyi: Buka</span>
+        </button>
+        <div class="language-switch" role="group" aria-label="Language">
+          <button class="language-btn active" type="button" data-lang="bm" aria-pressed="true">BM</button>
+          <button class="language-btn" type="button" data-lang="zh" aria-pressed="false">中文</button>
+          <button class="language-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <nav class="mode-tabs" id="modeTabs" aria-label="Learning modes">
+        <button class="mode-tab active" type="button" data-mode="explore" aria-pressed="true">
+          <span aria-hidden="true">🔎</span><span data-i18n="modeExplore">Kenal Nombor</span>
+        </button>
+        <button class="mode-tab" type="button" data-mode="compare" aria-pressed="false">
+          <span aria-hidden="true">👀</span><span data-i18n="modeCompare">Mana Lebih Besar?</span>
+        </button>
+        <button class="mode-tab" type="button" data-mode="rounding" aria-pressed="false">
+          <span aria-hidden="true">🎯</span><span data-i18n="modeRounding">Nombor Terdekat</span>
+        </button>
+        <button class="mode-tab" type="button" data-mode="pattern" aria-pressed="false">
+          <span aria-hidden="true">🧩</span><span data-i18n="modePattern">Cari Pola</span>
+        </button>
+      </nav>
+
+      <section class="workspace">
+        <aside class="control-panel" aria-labelledby="modeTitle">
+          <div class="panel-heading">
+            <span class="eyebrow" id="levelEyebrow" data-i18n="controls">Pilih nombor</span>
+            <h2 id="modeTitle">Kenal nombor</h2>
+          </div>
+          <div id="controlsHost"></div>
+          <button class="secondary-btn full-width" id="newQuestionBtn" type="button">
+            <span aria-hidden="true">↻</span><span data-i18n="newQuestion">Soalan baharu</span>
+          </button>
+        </aside>
+
+        <section class="visual-panel" aria-labelledby="promptText">
+          <div class="celebration-layer" id="celebrationLayer" aria-hidden="true"></div>
+          <div class="prompt-row">
+            <div>
+              <span class="eyebrow" data-i18n="yourTask">Mari cuba!</span>
+              <h2 id="promptText">Pilih satu nombor pada garis nombor.</h2>
+            </div>
+            <button class="speak-answer-btn" id="speakBtn" type="button" disabled>
+              <span aria-hidden="true">🔊</span><span data-i18n="speakAnswer">Dengar jawapan</span>
+            </button>
+          </div>
+
+          <div class="number-display" id="numberDisplay" aria-live="polite"></div>
+
+          <div class="number-line-frame">
+            <svg id="numberLine" viewBox="0 0 1000 330" role="img" aria-labelledby="lineTitle lineDescription">
+              <title id="lineTitle">Interactive number line</title>
+              <desc id="lineDescription">A number line showing the selected numbers.</desc>
+              <g id="lineLayer"></g>
+            </svg>
+          </div>
+
+          <div class="answer-area" id="answerArea"></div>
+          <div class="feedback" id="feedback" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <section class="learning-strip" aria-label="Learning steps">
+        <div><span>1</span><strong data-i18n="stepLook">Lihat kedudukan</strong></div>
+        <div><span>2</span><strong data-i18n="stepThink">Fikir hubungannya</strong></div>
+        <div><span>3</span><strong data-i18n="stepAnswer">Beri jawapan</strong></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="forest-footer" aria-hidden="true">
+    <img src="assets/forest-footer.png" alt="">
+  </div>
+
+  <script src="grade-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
