@@ -39,6 +39,70 @@ button, input, select { font: inherit; }
 button { cursor: pointer; }
 button:active { transform: translateY(1px) scale(.98); }
 
+[hidden] { display: none !important; }
+
+.auth-gate {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  min-height: 100vh;
+  padding: 24px;
+  place-items: center;
+}
+
+.auth-card {
+  width: min(520px, 100%);
+  padding: 38px 32px;
+  text-align: center;
+  border: 3px solid rgba(23, 107, 88, .28);
+  border-radius: 24px;
+  background: rgba(255, 253, 246, .96);
+  box-shadow: var(--shadow);
+}
+
+.auth-card h1 {
+  margin-bottom: 12px;
+}
+
+.auth-card p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.auth-indicator {
+  display: block;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 22px;
+  border: 7px solid var(--green-soft);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: auth-spin .8s linear infinite;
+}
+
+.auth-gate.is-error .auth-card {
+  border-color: rgba(214, 79, 79, .35);
+}
+
+.auth-gate.is-error .auth-indicator {
+  display: grid;
+  color: var(--red);
+  font-size: 32px;
+  font-weight: 800;
+  border: 3px solid currentColor;
+  animation: none;
+  place-items: center;
+}
+
+.auth-gate.is-error .auth-indicator::before {
+  content: "!";
+}
+
+@keyframes auth-spin {
+  to { transform: rotate(360deg); }
+}
+
 .app-shell {
   position: relative;
   z-index: 2;
